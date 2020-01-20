@@ -16,11 +16,11 @@ resource "local_file" "userdata" {
   filename = "${path.module}/userdata.txt"
   content  = <<TEMP
 #!/bin/bash
-if ! $(command -v unzip); then
-  if $(command -v apt-get); then
+if ! $(command -v unzip >/dev/null 2>&1); then
+  if $(command -v apt-get >/dev/null 2>&1); then
     sudo apt-get update -y
     sudo apt-get install -y unzip
-  elif $(command -v yum); then
+  elif $(command -v yum >/dev/null 2>&1); then
     sudo yum update -y
     sudo yum install -y unzip
   else
