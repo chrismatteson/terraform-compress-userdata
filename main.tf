@@ -13,7 +13,7 @@ data "local_file" "compress" {
 }
 
 resource "local_file" "userdata" {
-  filename = "userdata.txt"
+  filename = "${path.module}/userdata.txt"
   content  = <<TEMP
 #!/bin/bash
 userdata_zip=$(cat <<EOF
