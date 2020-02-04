@@ -9,7 +9,8 @@ data "archive_file" "compress" {
 }
 
 data "local_file" "compress" {
-  filename = data.archive_file.compress.output_path
+  filename   = data.archive_file.compress.output_path
+  depends_on = [data.archive_file.compress]
 }
 
 resource "local_file" "userdata" {
